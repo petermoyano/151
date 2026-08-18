@@ -18,6 +18,8 @@ export type CraneComponentId =
   | "end-stops"
   | "bridge"
   | "power-supply"
+  | "main-power-panel"
+  | "bridge-control-panel"
   | "trolley"
   | "trolley-motor-a"
   | "trolley-motor-b"

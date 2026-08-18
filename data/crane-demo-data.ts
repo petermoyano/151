@@ -3,6 +3,8 @@ export const craneDemoComponentIds = [
   "end-stops",
   "bridge",
   "power-supply",
+  "main-power-panel",
+  "bridge-control-panel",
   "trolley",
   "trolley-motor-a",
   "trolley-motor-b",
@@ -104,6 +106,56 @@ export const craneDemoData = {
           recommendedPurchaseBefore: "2026-12-01",
           reason:
             "Mantener una unidad de reemplazo para evitar indisponibilidad ante desgaste de ruedas.",
+        },
+      ],
+    },
+    {
+      id: "main-power-panel",
+      parentId: "power-supply",
+      assetId: "CRN-01-PNL-PWR",
+      name: "Tablero general de potencia",
+      category: "Distribución eléctrica",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-07-18",
+        nextScheduled: "2026-10-18",
+        status: "al_dia",
+        description:
+          "Termografía, reapriete de conexiones, prueba de protecciones, limpieza y revisión de sellos.",
+      },
+      recentAlerts: [],
+      spareParts: [
+        {
+          name: "Kit de ventilación y filtros para tablero",
+          priority: "preventivo",
+          recommendedPurchaseBefore: "2026-12-15",
+          reason:
+            "Mantener consumibles disponibles para el próximo mantenimiento trimestral.",
+        },
+      ],
+    },
+    {
+      id: "bridge-control-panel",
+      parentId: "power-supply",
+      assetId: "CRN-01-PNL-CTL",
+      name: "Tablero de control del puente",
+      category: "Control y automatización",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-08-04",
+        nextScheduled: "2026-10-04",
+        status: "al_dia",
+        description:
+          "Verificación de PLC, contactores, borneras, fuente de control y ventilación del gabinete.",
+      },
+      recentAlerts: [],
+      spareParts: [
+        {
+          name: "Fuente de alimentación 24 VDC",
+          priority: "preventivo",
+          recommendedPurchaseBefore: "2026-11-30",
+          reason:
+            "Mantener una unidad compatible para reducir el tiempo de recuperación ante falla.",
         },
       ],
     },

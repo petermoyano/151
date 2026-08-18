@@ -45,6 +45,26 @@ export const craneComponents: Record<
     status: "Operativo",
     assetCode: "CRN-01-FST",
   },
+  "main-power-panel": {
+    id: "main-power-panel",
+    name: "Tablero general de potencia",
+    parentId: "power-supply",
+    category: "Distribución eléctrica",
+    description:
+      "Tablero principal que concentra protección, seccionamiento y distribución de energía para el puente grúa.",
+    status: "Operativo",
+    assetCode: "CRN-01-PNL-PWR",
+  },
+  "bridge-control-panel": {
+    id: "bridge-control-panel",
+    name: "Tablero de control del puente",
+    parentId: "power-supply",
+    category: "Control y automatización",
+    description:
+      "Gabinete montado en el puente que aloja control, maniobra y señales de los sistemas móviles.",
+    status: "Operativo",
+    assetCode: "CRN-01-PNL-CTL",
+  },
   trolley: {
     id: "trolley",
     name: "Carro de traslación",

@@ -1,6 +1,10 @@
 import { CraneBridge } from "@/components/crane/CraneBridge";
 import { CraneCable } from "@/components/crane/CraneCable";
 import { CraneElectricalSupply } from "@/components/crane/CraneElectricalSupply";
+import {
+  CraneBridgeControlPanel,
+  CraneMainPowerPanel,
+} from "@/components/crane/CraneElectricalPanels";
 import { CraneHoist } from "@/components/crane/CraneHoist";
 import { CraneHook } from "@/components/crane/CraneHook";
 import { SelectableCranePart } from "@/components/crane/CranePart";
@@ -8,6 +12,7 @@ import { CraneRails } from "@/components/crane/CraneRails";
 import {
   CraneEndStops,
   CraneWarningBeacon,
+  PlantSafetyMarkings,
 } from "@/components/crane/CraneSafetyDetails";
 import {
   CraneTrolley,
@@ -30,6 +35,8 @@ const labelPositions: Record<CraneComponentId, [number, number, number]> = {
   "end-stops": [-6.5, 7.55, 13.5],
   bridge: [-3.8, 8.25, 0.72],
   "power-supply": [-3, 6.05, -1.13],
+  "main-power-panel": [7.2, 2.25, 7.5],
+  "bridge-control-panel": [5.2, 8.55, -1.02],
   trolley: [0.4, 9.25, 0],
   "trolley-motor-a": [-0.75, 8.95, 0.3],
   "trolley-motor-b": [1.55, 8.95, 0.3],
@@ -76,6 +83,12 @@ export function OverheadCrane({
       <SelectableCranePart {...partProps("power-supply")}>
         <CraneElectricalSupply state={stateFor("power-supply")} />
       </SelectableCranePart>
+      <SelectableCranePart {...partProps("main-power-panel")}>
+        <CraneMainPowerPanel state={stateFor("main-power-panel")} />
+      </SelectableCranePart>
+      <SelectableCranePart {...partProps("bridge-control-panel")}>
+        <CraneBridgeControlPanel state={stateFor("bridge-control-panel")} />
+      </SelectableCranePart>
       <SelectableCranePart {...partProps("trolley")}>
         <CraneTrolley state={stateFor("trolley")} />
       </SelectableCranePart>
@@ -98,6 +111,7 @@ export function OverheadCrane({
         <CraneHook state={stateFor("hook")} />
       </SelectableCranePart>
       <CraneWarningBeacon />
+      <PlantSafetyMarkings />
     </group>
   );
 }

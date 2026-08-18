@@ -77,6 +77,8 @@ Its main components are:
   - Topes de fin de carrera
 - Puente de la grúa
   - Alimentación eléctrica por festón
+    - Tablero general de potencia
+    - Tablero de control del puente
 - Carro de traslación
   - Motor de traslación A
   - Motor de traslación B
@@ -127,11 +129,12 @@ Include dates, quantities, alert counts, and status values when they exist in th
 
 If the question uses an informal or alternate component name, use the active viewer context and the structured data to identify the component. Do not guess when the component cannot be identified reliably.
 
-A record with parentId belongs to that parent assembly. When the user asks about an assembly as a whole, consider its own record and all direct child records. When the user asks about a specific child, focus on that component.
+A record with parentId belongs to that parent assembly. When the user asks about an assembly as a whole, consider its own record and all descendant records. When the user asks about a specific child, focus on that component.
 
 Known maintained relationships:
 - rails include the end stops
 - bridge includes the festoon electrical supply
+- the festoon electrical supply includes the main power panel and bridge control panel
 - trolley includes both travel motors and the trolley wheels
 
 Do not count the same alert twice if it is described at both assembly and subcomponent level.
