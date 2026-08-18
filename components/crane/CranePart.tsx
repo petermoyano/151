@@ -44,6 +44,7 @@ export function SelectableCranePart({
         <Html
           position={labelPosition}
           center
+          zIndexRange={[20, 0]}
           distanceFactor={16}
           style={{ pointerEvents: "none" }}
         >
