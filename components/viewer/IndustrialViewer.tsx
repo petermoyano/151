@@ -1,7 +1,10 @@
 "use client";
 
-import { Box, MousePointer2 } from "lucide-react";
+import { Bot, Box, MousePointer2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { PlantScopeChat } from "@/components/chat/PlantScopeChat";
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { OverheadCrane } from "@/components/crane/OverheadCrane";
 import { ComponentInfoPanel } from "@/components/viewer/ComponentInfoPanel";
 import { ViewerScene } from "@/components/viewer/ViewerScene";
@@ -16,6 +19,9 @@ export function IndustrialViewer() {
   const [showLabels, setShowLabels] = useState(false);
   const [resetRequest, setResetRequest] = useState(0);
   const [fitRequest, setFitRequest] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatComponentId, setChatComponentId] =
+    useState<CraneComponentId | null>(null);
 
   useEffect(() => {
     document.body.style.cursor = hoveredId ? "pointer" : "";
@@ -35,6 +41,9 @@ export function IndustrialViewer() {
 
   const hoveredComponent = hoveredId ? craneComponents[hoveredId] : null;
   const selectedComponent = selectedId ? craneComponents[selectedId] : null;
+  const chatComponent = chatComponentId
+    ? craneComponents[chatComponentId]
+    : null;
 
   return (
     <main className="flex h-[100svh] min-h-[520px] flex-col overflow-hidden bg-[#070a0f] text-slate-100">
@@ -65,17 +74,37 @@ export function IndustrialViewer() {
           </span>
         </div>
 
-        <div
-          className="flex items-center gap-2.5"
-          aria-label="Estado de la vista en vivo"
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-40 motion-reduce:animate-none" />
-            <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-          </span>
-          <span className="font-mono text-[9px] font-medium uppercase tracking-[0.16em] text-slate-400 max-sm:hidden">
-            Vista 3D en vivo
-          </span>
+        <div className="flex items-center gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  setChatComponentId(null);
+                  setChatOpen(true);
+                }}
+                aria-label="Abrir PlantScope AI"
+                className="h-8 rounded-sm border-sky-400/20 bg-sky-400/[0.04] px-2.5 font-mono text-[9px] uppercase tracking-[0.1em] text-sky-300 hover:border-sky-400/35 hover:bg-sky-400/[0.08] hover:text-sky-200"
+              >
+                <Bot size={14} aria-hidden="true" />
+                <span className="max-lg:hidden">PlantScope AI</span>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">Abrir PlantScope AI</TooltipContent>
+          </Tooltip>
+          <div
+            className="flex items-center gap-2.5 max-md:hidden"
+            aria-label="Estado de la vista en vivo"
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-40 motion-reduce:animate-none" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+            </span>
+            <span className="font-mono text-[9px] font-medium uppercase tracking-[0.16em] text-slate-400">
+              Vista 3D en vivo
+            </span>
+          </div>
         </div>
       </header>
 
@@ -111,6 +140,10 @@ export function IndustrialViewer() {
           <ComponentInfoPanel
             component={selectedComponent}
             onClose={() => setSelectedId(null)}
+            onAskAI={() => {
+              setChatComponentId(selectedComponent.id);
+              setChatOpen(true);
+            }}
           />
         ) : null}
 
@@ -138,6 +171,11 @@ export function IndustrialViewer() {
           Unidades · metros
         </div>
       </section>
+      <PlantScopeChat
+        open={chatOpen}
+        onOpenChange={setChatOpen}
+        componentContext={chatComponent}
+      />
     </main>
   );
 }

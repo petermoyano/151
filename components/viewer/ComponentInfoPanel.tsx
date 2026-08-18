@@ -5,15 +5,18 @@ import {
   CircleDot,
   Layers3,
   MessageSquareText,
+  Sparkles,
   Wrench,
   X,
   type LucideIcon,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import type { IndustrialComponentMetadata } from "@/types/industrial";
 
 interface ComponentInfoPanelProps {
   component: IndustrialComponentMetadata;
   onClose: () => void;
+  onAskAI: () => void;
 }
 
 interface PlaceholderRowProps {
@@ -45,6 +48,7 @@ function PlaceholderRow({
 export function ComponentInfoPanel({
   component,
   onClose,
+  onAskAI,
 }: ComponentInfoPanelProps) {
   return (
     <aside
@@ -114,7 +118,18 @@ export function ComponentInfoPanel({
           </p>
         </div>
 
-        <details className="group mt-5 border border-white/[0.08] bg-black/10">
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={onAskAI}
+          className="mt-5 h-9 w-full justify-start rounded-sm border-sky-400/20 bg-sky-400/[0.04] px-3 font-mono text-[9px] uppercase tracking-[0.11em] text-sky-300 hover:border-sky-400/35 hover:bg-sky-400/[0.08] hover:text-sky-200"
+        >
+          <Sparkles size={13} aria-hidden="true" />
+          Consultar con PlantScope AI
+        </Button>
+
+        <details className="group mt-4 border border-white/[0.08] bg-black/10">
           <summary className="flex cursor-pointer list-none items-center gap-3 px-3.5 py-3 [&::-webkit-details-marker]:hidden">
             <Activity
               size={14}
