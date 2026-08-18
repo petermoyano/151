@@ -33,14 +33,14 @@ function CameraController({
 
   useEffect(() => {
     if (!controls) return;
-    camera.position.set(14.5, 10, 17.5);
+    camera.position.set(19, 13, 27);
     controls.target.copy(DEFAULT_TARGET);
     controls.update();
   }, [camera, controls, resetRequest]);
 
   useEffect(() => {
     if (!controls || fitRequest === 0) return;
-    camera.position.set(18.5, 13.5, 23);
+    camera.position.set(22, 15, 31);
     controls.target.copy(DEFAULT_TARGET);
     controls.update();
   }, [camera, controls, fitRequest]);
@@ -59,7 +59,7 @@ export function ViewerScene({
     <Canvas
       shadows="percentage"
       dpr={[1, 2]}
-      camera={{ position: [14.5, 10, 17.5], fov: 42, near: 0.1, far: 120 }}
+      camera={{ position: [19, 13, 27], fov: 42, near: 0.1, far: 120 }}
       gl={{
         antialias: true,
         alpha: false,
@@ -74,7 +74,7 @@ export function ViewerScene({
       }
     >
       <color attach="background" args={["#090d13"]} />
-      <fog attach="fog" args={["#090d13", 24, 54]} />
+      <fog attach="fog" args={["#090d13", 28, 65]} />
 
       <hemisphereLight args={["#dcecff", "#101820", 1.45]} />
       <ambientLight intensity={0.38} />
@@ -84,10 +84,10 @@ export function ViewerScene({
         color="#f3f7ff"
         castShadow
         shadow-mapSize={[2048, 2048]}
-        shadow-camera-left={-18}
-        shadow-camera-right={18}
-        shadow-camera-top={18}
-        shadow-camera-bottom={-18}
+        shadow-camera-left={-22}
+        shadow-camera-right={22}
+        shadow-camera-top={22}
+        shadow-camera-bottom={-22}
         shadow-camera-near={1}
         shadow-camera-far={45}
         shadow-bias={-0.00015}
@@ -132,7 +132,7 @@ export function ViewerScene({
       <ContactShadows
         position={[0, 0.02, 0]}
         opacity={0.42}
-        scale={34}
+        scale={42}
         blur={2.4}
         far={14}
         resolution={1024}
@@ -144,7 +144,7 @@ export function ViewerScene({
         enableDamping
         dampingFactor={0.07}
         minDistance={7}
-        maxDistance={46}
+        maxDistance={55}
         minPolarAngle={0.18}
         maxPolarAngle={Math.PI / 2.04}
         screenSpacePanning={false}

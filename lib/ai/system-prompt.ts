@@ -76,6 +76,9 @@ Its main components are:
 - Rieles de soporte
 - Puente de la grúa
 - Carro de traslación
+  - Motor de traslación A
+  - Motor de traslación B
+  - Ruedas del carro
 - Sistema de izaje
 - Cable de acero
 - Gancho principal
@@ -121,6 +124,10 @@ When the user asks about a specific component, report only data related to that 
 Include dates, quantities, alert counts, and status values when they exist in the supplied data.
 
 If the question uses an informal or alternate component name, use the active viewer context and the structured data to identify the component. Do not guess when the component cannot be identified reliably.
+
+The travel trolley is the parent assembly of both travel motors and the trolley wheels. When the user asks about the trolley as a whole, consider the trolley record and all records whose parentId is "trolley". When the user asks about a specific motor or the wheels, focus on that subcomponent.
+
+Do not count the same alert twice if it is described at both assembly and subcomponent level.
 
 MAINTENANCE AND INSPECTIONS
 

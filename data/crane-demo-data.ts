@@ -2,6 +2,9 @@ export const craneDemoComponentIds = [
   "rails",
   "bridge",
   "trolley",
+  "trolley-motor-a",
+  "trolley-motor-b",
+  "trolley-wheels",
   "hoist",
   "cable",
   "hook",
@@ -62,7 +65,42 @@ export const craneDemoData = {
         lastCompleted: "2026-07-28",
         nextScheduled: "2026-09-28",
         status: "al_dia",
-        description: "Control de ruedas, freno y sistema de traslación.",
+        description:
+          "Inspección general del carro, estructura, freno y sincronización.",
+      },
+      recentAlerts: [],
+      spareParts: [],
+    },
+    {
+      id: "trolley-motor-a",
+      parentId: "trolley",
+      assetId: "CRN-01-TRL-MA",
+      name: "Motor de traslación A",
+      category: "Accionamiento del carro",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-07-28",
+        nextScheduled: "2026-09-28",
+        status: "al_dia",
+        description:
+          "Control eléctrico, lubricación y verificación de temperatura y vibración.",
+      },
+      recentAlerts: [],
+      spareParts: [],
+    },
+    {
+      id: "trolley-motor-b",
+      parentId: "trolley",
+      assetId: "CRN-01-TRL-MB",
+      name: "Motor de traslación B",
+      category: "Accionamiento del carro",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-07-28",
+        nextScheduled: "2026-09-28",
+        status: "al_dia",
+        description:
+          "Control eléctrico, lubricación y verificación de temperatura y vibración.",
       },
       recentAlerts: [
         {
@@ -70,11 +108,36 @@ export const craneDemoData = {
           severity: "info",
           type: "pico_corriente",
           description:
-            "Pico breve de consumo eléctrico durante una maniobra.",
+            "Pico breve de consumo eléctrico durante una maniobra de traslación.",
           resolved: true,
         },
       ],
       spareParts: [],
+    },
+    {
+      id: "trolley-wheels",
+      parentId: "trolley",
+      assetId: "CRN-01-TRL-WHL",
+      name: "Ruedas del carro",
+      category: "Rodadura del carro",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-07-28",
+        nextScheduled: "2026-09-28",
+        status: "al_dia",
+        description:
+          "Inspección de las cuatro ruedas, ejes, pestañas, alineación y desgaste de rodadura.",
+      },
+      recentAlerts: [],
+      spareParts: [
+        {
+          name: "Juego de ruedas de traslación",
+          priority: "preventivo",
+          recommendedPurchaseBefore: "2026-12-15",
+          reason:
+            "Mantener un juego disponible para el próximo ciclo de inspección dimensional.",
+        },
+      ],
     },
     {
       id: "hoist",

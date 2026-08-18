@@ -34,6 +34,36 @@ export const craneComponents: Record<
     status: "Operativo",
     assetCode: "CRN-01-TRL",
   },
+  "trolley-motor-a": {
+    id: "trolley-motor-a",
+    name: "Motor de traslación A",
+    parentId: "trolley",
+    category: "Accionamiento del carro",
+    description:
+      "Motorreductor eléctrico del lado A que impulsa el desplazamiento transversal del carro.",
+    status: "Operativo",
+    assetCode: "CRN-01-TRL-MA",
+  },
+  "trolley-motor-b": {
+    id: "trolley-motor-b",
+    name: "Motor de traslación B",
+    parentId: "trolley",
+    category: "Accionamiento del carro",
+    description:
+      "Motorreductor eléctrico del lado B que sincroniza el desplazamiento transversal del carro.",
+    status: "Operativo",
+    assetCode: "CRN-01-TRL-MB",
+  },
+  "trolley-wheels": {
+    id: "trolley-wheels",
+    name: "Ruedas del carro",
+    parentId: "trolley",
+    category: "Rodadura del carro",
+    description:
+      "Conjunto de cuatro ruedas, ejes y superficies de rodadura que guía el carro sobre el puente.",
+    status: "Operativo",
+    assetCode: "CRN-01-TRL-WHL",
+  },
   hoist: {
     id: "hoist",
     name: "Conjunto del polipasto",

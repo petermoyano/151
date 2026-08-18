@@ -1,7 +1,8 @@
 import { PartMaterial } from "@/components/crane/CranePart";
 import type { InteractionState } from "@/types/industrial";
 
-const COLUMN_Z_POSITIONS = [-9, -4.5, 0, 4.5, 9];
+const COLUMN_Z_POSITIONS = [-13.5, -9, -4.5, 0, 4.5, 9, 13.5];
+const RAIL_LENGTH = 28.5;
 
 export function CraneRails({ state }: { state: InteractionState }) {
   return (
@@ -9,11 +10,11 @@ export function CraneRails({ state }: { state: InteractionState }) {
       {[-6.5, 6.5].map((x) => (
         <group key={x}>
           <mesh position={[x, 6.15, 0]} castShadow receiveShadow>
-            <boxGeometry args={[0.65, 0.75, 19.5]} />
+            <boxGeometry args={[0.65, 0.75, RAIL_LENGTH]} />
             <PartMaterial color="#465260" state={state} />
           </mesh>
           <mesh position={[x, 6.61, 0]} castShadow receiveShadow>
-            <boxGeometry args={[0.22, 0.16, 19.5]} />
+            <boxGeometry args={[0.22, 0.16, RAIL_LENGTH]} />
             <PartMaterial color="#77828d" state={state} metalness={0.65} roughness={0.28} />
           </mesh>
           {COLUMN_Z_POSITIONS.map((z) => (

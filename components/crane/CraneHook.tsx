@@ -20,7 +20,7 @@ export function CraneHook({ state }: { state: InteractionState }) {
   );
 
   return (
-    <group position={[0.4, 2.33, 0]}>
+    <group position={[0.4, 2.33, 0]} scale={0.78}>
       <mesh castShadow receiveShadow>
         <boxGeometry args={[0.94, 0.58, 0.58]} />
         <PartMaterial color="#b9b49f" state={state} metalness={0.72} roughness={0.3} />
