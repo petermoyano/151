@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PlantScope 3D | Visor de activos industriales",
+  title: "Nexo Industrial 3D | Visor de activos industriales",
   description:
     "Un espacio 3D interactivo para inspeccionar equipamiento industrial.",
 };

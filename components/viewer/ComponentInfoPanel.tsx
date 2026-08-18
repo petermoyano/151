@@ -126,7 +126,7 @@ export function ComponentInfoPanel({
           className="mt-5 h-9 w-full justify-start rounded-sm border-sky-400/20 bg-sky-400/[0.04] px-3 font-mono text-[9px] uppercase tracking-[0.11em] text-sky-300 hover:border-sky-400/35 hover:bg-sky-400/[0.08] hover:text-sky-200"
         >
           <Sparkles size={13} aria-hidden="true" />
-          Consultar con PlantScope AI
+          Consultar con Nexo Industrial AI
         </Button>
 
         <details className="group mt-4 border border-white/[0.08] bg-black/10">

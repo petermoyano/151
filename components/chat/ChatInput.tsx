@@ -43,7 +43,7 @@ export function ChatInput({ disabled, onSend }: ChatInputProps) {
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Preguntá sobre el puente grúa..."
-          aria-label="Consulta para PlantScope AI"
+          aria-label="Consulta para Nexo Industrial AI"
           maxLength={2000}
           rows={1}
           className="max-h-32 min-h-9 flex-1 resize-none rounded-none border-0 bg-transparent px-2 py-2 text-sm leading-5 text-slate-200 shadow-none placeholder:text-slate-600 focus-visible:ring-0"

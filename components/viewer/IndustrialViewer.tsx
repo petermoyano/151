@@ -2,7 +2,7 @@
 
 import { Bot, Box, MousePointer2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { PlantScopeChat } from "@/components/chat/PlantScopeChat";
+import { NexoIndustrialChat } from "@/components/chat/NexoIndustrialChat";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { OverheadCrane } from "@/components/crane/OverheadCrane";
@@ -54,7 +54,7 @@ export function IndustrialViewer() {
           </div>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold tracking-tight text-slate-100">
-              PlantScope <span className="text-sky-400">3D</span>
+              Nexo Industrial <span className="text-sky-400">3D</span>
             </p>
             <p className="mt-0.5 truncate font-mono text-[8px] uppercase tracking-[0.2em] text-slate-600 max-sm:hidden">
               Visor de activos industriales
@@ -84,14 +84,14 @@ export function IndustrialViewer() {
                   setChatComponentId(null);
                   setChatOpen(true);
                 }}
-                aria-label="Abrir PlantScope AI"
+                aria-label="Abrir Nexo Industrial AI"
                 className="h-8 rounded-sm border-sky-400/20 bg-sky-400/[0.04] px-2.5 font-mono text-[9px] uppercase tracking-[0.1em] text-sky-300 hover:border-sky-400/35 hover:bg-sky-400/[0.08] hover:text-sky-200"
               >
                 <Bot size={14} aria-hidden="true" />
-                <span className="max-lg:hidden">PlantScope AI</span>
+                <span className="max-lg:hidden">Nexo Industrial AI</span>
               </Button>
             </TooltipTrigger>
-            <TooltipContent side="bottom">Abrir PlantScope AI</TooltipContent>
+            <TooltipContent side="bottom">Abrir Nexo Industrial AI</TooltipContent>
           </Tooltip>
           <div
             className="flex items-center gap-2.5 max-md:hidden"
@@ -171,7 +171,7 @@ export function IndustrialViewer() {
           Unidades · metros
         </div>
       </section>
-      <PlantScopeChat
+      <NexoIndustrialChat
         open={chatOpen}
         onOpenChange={setChatOpen}
         componentContext={chatComponent}

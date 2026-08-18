@@ -11,6 +11,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { ChatInput } from "@/components/chat/ChatInput";
+import { ChatFunctionStatus } from "@/components/chat/ChatFunctionStatus";
 import { ChatMessages } from "@/components/chat/ChatMessages";
 
 interface ChatPanelProps {
@@ -31,6 +32,7 @@ export function ChatPanel({
   onRetry,
 }: ChatPanelProps) {
   const busy = status === "submitted" || status === "streaming";
+  const hasConversation = messages.some((message) => message.role === "user");
 
   return (
     <div className="flex min-h-0 flex-1 flex-col bg-[#0a1017]">
@@ -52,7 +54,7 @@ export function ChatPanel({
           </div>
           <div className="min-w-0">
             <SheetTitle className="text-sm font-semibold text-slate-100">
-              PlantScope AI
+              Nexo Industrial AI
             </SheetTitle>
             <SheetDescription className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.14em] text-slate-600">
               Asistente del Puente Grúa 01
@@ -64,7 +66,7 @@ export function ChatPanel({
             type="button"
             variant="ghost"
             size="icon"
-            aria-label="Cerrar PlantScope AI"
+            aria-label="Cerrar Nexo Industrial AI"
             className="absolute right-3 top-3.5 size-8 rounded-sm text-slate-500 hover:bg-white/5 hover:text-white max-sm:hidden"
           >
             <X size={15} aria-hidden="true" />
@@ -80,6 +82,10 @@ export function ChatPanel({
         ) : null}
       </SheetHeader>
 
+      <ChatFunctionStatus
+        status={status}
+        visible={hasConversation}
+      />
       <ChatMessages
         messages={messages}
         status={status}

@@ -47,7 +47,7 @@ export function ChatMessages({
               <Sparkles size={18} aria-hidden="true" />
             </div>
             <h2 className="text-base font-semibold tracking-tight text-slate-100">
-              PlantScope AI
+              Nexo Industrial AI
             </h2>
             <p className="mt-1 text-sm text-slate-400">
               Asistente operativo del Puente Grúa 01.
@@ -97,7 +97,7 @@ export function ChatMessages({
                     {!isUser ? (
                       <div className="mb-2 flex items-center gap-2 font-mono text-[8px] uppercase tracking-[0.18em] text-sky-400">
                         <Bot size={12} aria-hidden="true" />
-                        PlantScope AI
+                        Nexo Industrial AI
                       </div>
                     ) : null}
                     {textParts.map((part, index) => (
@@ -130,8 +130,8 @@ export function ChatMessages({
                 className="border border-red-400/20 bg-red-400/[0.05] p-3"
               >
                 <p className="text-xs leading-5 text-red-200">
-                  No pudimos obtener una respuesta de PlantScope AI. Intentá
-                  nuevamente.
+                  No pudimos obtener una respuesta de Nexo Industrial AI.
+                  Intentá nuevamente.
                 </p>
                 <Button
                   type="button"

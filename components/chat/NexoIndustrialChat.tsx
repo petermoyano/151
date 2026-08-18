@@ -10,17 +10,17 @@ import type {
   IndustrialComponentMetadata,
 } from "@/types/industrial";
 
-interface PlantScopeChatProps {
+interface NexoIndustrialChatProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   componentContext: IndustrialComponentMetadata<CraneComponentId> | null;
 }
 
-export function PlantScopeChat({
+export function NexoIndustrialChat({
   open,
   onOpenChange,
   componentContext,
-}: PlantScopeChatProps) {
+}: NexoIndustrialChatProps) {
   const transport = useMemo(
     () => new DefaultChatTransport({ api: "/api/chat" }),
     [],

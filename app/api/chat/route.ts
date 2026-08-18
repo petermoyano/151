@@ -8,9 +8,12 @@ import {
 } from "ai";
 import { z } from "zod";
 import { craneDemoComponentIds } from "@/data/crane-demo-data";
-import { createPlantScopeSystemPrompt } from "@/lib/ai/system-prompt";
+import { createNexoIndustrialSystemPrompt } from "@/lib/ai/system-prompt";
 
 export const maxDuration = 30;
+
+// Demo-only latency. Remove when the real operational data query is connected.
+const DEMO_QUERY_DELAY_MS = 2_000;
 
 const model =
   process.env.AI_MODEL ?? "anthropic/claude-haiku-4.5";
@@ -21,7 +24,7 @@ const requestSchema = z.object({
 });
 
 const clientErrorMessage =
-  "No pudimos obtener una respuesta de PlantScope AI. Intentá nuevamente.";
+  "No pudimos obtener una respuesta de Nexo Industrial AI. Intentá nuevamente.";
 
 function jsonError(message: string, status: number) {
   return Response.json({ error: message }, { status });
@@ -30,14 +33,14 @@ function jsonError(message: string, status: number) {
 function logServerError(label: string, error: unknown) {
   const detail =
     error instanceof Error ? `${error.name}: ${error.message}` : "Error desconocido";
-  console.error(`[PlantScope AI] ${label}: ${detail}`);
+  console.error(`[Nexo Industrial AI] ${label}: ${detail}`);
 }
 
 export async function POST(request: Request) {
   if (!process.env.AI_GATEWAY_API_KEY?.trim()) {
-    console.error("[PlantScope AI] AI_GATEWAY_API_KEY is not configured.");
+    console.error("[Nexo Industrial AI] AI_GATEWAY_API_KEY is not configured.");
     return jsonError(
-      "PlantScope AI no está configurado. Contactá al administrador.",
+      "Nexo Industrial AI no está configurado. Contactá al administrador.",
       503,
     );
   }
@@ -63,15 +66,19 @@ export async function POST(request: Request) {
 
     if (!validatedMessages.success) {
       console.warn(
-        "[PlantScope AI] Invalid UI messages:",
+        "[Nexo Industrial AI] Invalid UI messages:",
         validatedMessages.error.message,
       );
       return jsonError("La solicitud de chat no es válida.", 400);
     }
 
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, DEMO_QUERY_DELAY_MS);
+    });
+
     const result = streamText({
       model,
-      instructions: createPlantScopeSystemPrompt(payload.data.componentId),
+      instructions: createNexoIndustrialSystemPrompt(payload.data.componentId),
       messages: await convertToModelMessages(validatedMessages.data),
       temperature: 0.2,
       maxOutputTokens: 700,
