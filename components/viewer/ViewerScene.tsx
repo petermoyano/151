@@ -57,7 +57,7 @@ export function ViewerScene({
 }: ViewerSceneProps) {
   return (
     <Canvas
-      shadows
+      shadows="percentage"
       dpr={[1, 2]}
       camera={{ position: [14.5, 10, 17.5], fov: 42, near: 0.1, far: 120 }}
       gl={{
@@ -66,10 +66,10 @@ export function ViewerScene({
         powerPreference: "high-performance",
       }}
       onPointerMissed={onClearSelection}
-      aria-label="Interactive 3D scene showing Overhead Crane 01"
+      aria-label="Escena 3D interactiva del Puente grúa 01"
       fallback={
         <div className="grid h-full place-items-center bg-[#090d13] p-8 text-center text-sm text-slate-400">
-          This device could not initialize the 3D viewer.
+          No fue posible iniciar el visor 3D en este dispositivo.
         </div>
       }
     >
@@ -98,9 +98,17 @@ export function ViewerScene({
         color="#7db9e8"
       />
 
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.04, 0]} receiveShadow>
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, -0.04, 0]}
+        receiveShadow
+      >
         <planeGeometry args={[80, 80]} />
-        <meshStandardMaterial color="#0b1118" roughness={0.94} metalness={0.06} />
+        <meshStandardMaterial
+          color="#0b1118"
+          roughness={0.94}
+          metalness={0.06}
+        />
       </mesh>
 
       {showGrid ? (

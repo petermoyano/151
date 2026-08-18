@@ -1,4 +1,7 @@
-export type ComponentStatus = "Operational" | "Attention" | "Offline";
+export type ComponentStatus =
+  | "Operativo"
+  | "Requiere atención"
+  | "Fuera de servicio";
 
 export interface IndustrialComponentMetadata<TId extends string = string> {
   id: TId;

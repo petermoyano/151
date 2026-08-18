@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PlantScope 3D | Industrial Asset Viewer",
+  title: "PlantScope 3D | Visor de activos industriales",
   description:
-    "An interactive 3D workspace for inspecting industrial equipment.",
+    "Un espacio 3D interactivo para inspeccionar equipamiento industrial.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="es-AR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body>{children}</body>

@@ -33,7 +33,7 @@ function ToolButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      aria-pressed={label.startsWith("Toggle") ? active : undefined}
+      aria-pressed={label.startsWith("Mostrar") ? active : undefined}
       title={label}
       className={`grid size-10 place-items-center border text-slate-300 transition-colors hover:bg-white/[0.07] hover:text-white ${
         active
@@ -58,18 +58,26 @@ export function ViewerToolbar({
     <div
       className="absolute left-4 top-4 z-20 flex overflow-hidden rounded-sm border border-white/5 shadow-2xl max-sm:left-3 max-sm:top-3"
       role="toolbar"
-      aria-label="3D viewer tools"
+      aria-label="Herramientas del visor 3D"
     >
-      <ToolButton label="Reset camera" icon={RotateCcw} onClick={onResetCamera} />
-      <ToolButton label="Fit crane to view" icon={Focus} onClick={onFitToView} />
       <ToolButton
-        label="Toggle floor grid"
+        label="Restablecer cámara"
+        icon={RotateCcw}
+        onClick={onResetCamera}
+      />
+      <ToolButton
+        label="Encuadrar la grúa"
+        icon={Focus}
+        onClick={onFitToView}
+      />
+      <ToolButton
+        label="Mostrar grilla del piso"
         icon={Grid3X3}
         active={showGrid}
         onClick={onToggleGrid}
       />
       <ToolButton
-        label="Toggle component labels"
+        label="Mostrar etiquetas de componentes"
         icon={Tags}
         active={showLabels}
         onClick={onToggleLabels}

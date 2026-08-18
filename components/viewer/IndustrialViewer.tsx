@@ -48,35 +48,41 @@ export function IndustrialViewer() {
               PlantScope <span className="text-sky-400">3D</span>
             </p>
             <p className="mt-0.5 truncate font-mono text-[8px] uppercase tracking-[0.2em] text-slate-600 max-sm:hidden">
-              Industrial asset viewer
+              Visor de activos industriales
             </p>
           </div>
         </div>
 
         <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-3 max-sm:static max-sm:translate-x-0">
           <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-600 max-md:hidden">
-            Asset
+            Activo
           </span>
           <span className="whitespace-nowrap text-xs font-medium text-slate-300">
-            Overhead Crane 01
+            Puente grúa 01
           </span>
           <span className="border border-white/10 px-1.5 py-0.5 font-mono text-[8px] text-slate-600 max-md:hidden">
             CRN-01
           </span>
         </div>
 
-        <div className="flex items-center gap-2.5" aria-label="Live view status">
+        <div
+          className="flex items-center gap-2.5"
+          aria-label="Estado de la vista en vivo"
+        >
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-40 motion-reduce:animate-none" />
             <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
           </span>
           <span className="font-mono text-[9px] font-medium uppercase tracking-[0.16em] text-slate-400 max-sm:hidden">
-            3D Live View
+            Vista 3D en vivo
           </span>
         </div>
       </header>
 
-      <section className="relative min-h-0 flex-1" aria-label="Crane viewer workspace">
+      <section
+        className="relative min-h-0 flex-1"
+        aria-label="Espacio de trabajo del visor de la grúa"
+      >
         <ViewerScene
           showGrid={showGrid}
           resetRequest={resetRequest}
@@ -121,13 +127,15 @@ export function IndustrialViewer() {
             <MousePointer2 size={14} aria-hidden="true" />
           </div>
           <div className="font-mono text-[8px] uppercase leading-4 tracking-[0.13em]">
-            <p>Drag to orbit · Scroll to zoom</p>
-            <p className="text-slate-600">Right drag to pan · Select a component</p>
+            <p>Arrastrar para orbitar · Rueda para acercar</p>
+            <p className="text-slate-600">
+              Clic derecho para desplazar · Seleccionar componente
+            </p>
           </div>
         </div>
 
         <div className="pointer-events-none absolute bottom-4 left-1/2 z-10 -translate-x-1/2 font-mono text-[8px] uppercase tracking-[0.16em] text-slate-700 max-md:hidden">
-          World units · meters
+          Unidades · metros
         </div>
       </section>
     </main>
