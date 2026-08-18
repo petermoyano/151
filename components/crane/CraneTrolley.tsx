@@ -17,6 +17,21 @@ export function CraneTrolley({ state }: { state: InteractionState }) {
         <boxGeometry args={[2.1, 0.18, 1.72]} />
         <PartMaterial color="#65717e" state={state} roughness={0.44} />
       </mesh>
+      {Array.from({ length: 8 }, (_, index) => (
+        <mesh
+          key={index}
+          position={[-0.98 + index * 0.28, 7.95, 1.04]}
+          rotation={[0, 0, 0.5]}
+          castShadow
+        >
+          <boxGeometry args={[0.22, 0.17, 0.035]} />
+          <meshStandardMaterial
+            color={index % 2 === 0 ? "#e2a72b" : "#171c22"}
+            metalness={0.18}
+            roughness={0.48}
+          />
+        </mesh>
+      ))}
     </group>
   );
 }

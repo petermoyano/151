@@ -15,7 +15,9 @@ export interface IndustrialComponentMetadata<TId extends string = string> {
 
 export type CraneComponentId =
   | "rails"
+  | "end-stops"
   | "bridge"
+  | "power-supply"
   | "trolley"
   | "trolley-motor-a"
   | "trolley-motor-b"

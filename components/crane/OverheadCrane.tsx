@@ -1,9 +1,14 @@
 import { CraneBridge } from "@/components/crane/CraneBridge";
 import { CraneCable } from "@/components/crane/CraneCable";
+import { CraneElectricalSupply } from "@/components/crane/CraneElectricalSupply";
 import { CraneHoist } from "@/components/crane/CraneHoist";
 import { CraneHook } from "@/components/crane/CraneHook";
 import { SelectableCranePart } from "@/components/crane/CranePart";
 import { CraneRails } from "@/components/crane/CraneRails";
+import {
+  CraneEndStops,
+  CraneWarningBeacon,
+} from "@/components/crane/CraneSafetyDetails";
 import {
   CraneTrolley,
   CraneTrolleyMotor,
@@ -22,7 +27,9 @@ interface OverheadCraneProps {
 
 const labelPositions: Record<CraneComponentId, [number, number, number]> = {
   rails: [-6.5, 7.3, -5.5],
+  "end-stops": [-6.5, 7.55, 13.5],
   bridge: [-3.8, 8.25, 0.72],
+  "power-supply": [-3, 6.05, -1.13],
   trolley: [0.4, 9.25, 0],
   "trolley-motor-a": [-0.75, 8.95, 0.3],
   "trolley-motor-b": [1.55, 8.95, 0.3],
@@ -60,8 +67,14 @@ export function OverheadCrane({
       <SelectableCranePart {...partProps("rails")}>
         <CraneRails state={stateFor("rails")} />
       </SelectableCranePart>
+      <SelectableCranePart {...partProps("end-stops")}>
+        <CraneEndStops state={stateFor("end-stops")} />
+      </SelectableCranePart>
       <SelectableCranePart {...partProps("bridge")}>
         <CraneBridge state={stateFor("bridge")} />
+      </SelectableCranePart>
+      <SelectableCranePart {...partProps("power-supply")}>
+        <CraneElectricalSupply state={stateFor("power-supply")} />
       </SelectableCranePart>
       <SelectableCranePart {...partProps("trolley")}>
         <CraneTrolley state={stateFor("trolley")} />
@@ -84,6 +97,7 @@ export function OverheadCrane({
       <SelectableCranePart {...partProps("hook")}>
         <CraneHook state={stateFor("hook")} />
       </SelectableCranePart>
+      <CraneWarningBeacon />
     </group>
   );
 }

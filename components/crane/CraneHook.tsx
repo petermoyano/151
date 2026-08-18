@@ -33,6 +33,19 @@ export function CraneHook({ state }: { state: InteractionState }) {
         <tubeGeometry args={[hookCurve, 32, 0.12, 12, false]} />
         <PartMaterial color="#c5bfaa" state={state} metalness={0.78} roughness={0.26} />
       </mesh>
+      <mesh position={[0.24, -0.55, 0]} rotation={[0, 0, -0.72]} castShadow>
+        <boxGeometry args={[0.08, 0.6, 0.1]} />
+        <PartMaterial
+          color="#d2a23a"
+          state={state}
+          metalness={0.58}
+          roughness={0.34}
+        />
+      </mesh>
+      <mesh position={[0.02, -0.31, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <cylinderGeometry args={[0.08, 0.08, 0.14, 14]} />
+        <PartMaterial color="#596571" state={state} metalness={0.7} roughness={0.3} />
+      </mesh>
     </group>
   );
 }

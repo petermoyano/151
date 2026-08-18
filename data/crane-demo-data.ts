@@ -1,6 +1,8 @@
 export const craneDemoComponentIds = [
   "rails",
+  "end-stops",
   "bridge",
+  "power-supply",
   "trolley",
   "trolley-motor-a",
   "trolley-motor-b",
@@ -40,6 +42,31 @@ export const craneDemoData = {
       spareParts: [],
     },
     {
+      id: "end-stops",
+      parentId: "rails",
+      assetId: "CRN-01-STP",
+      name: "Topes de fin de carrera",
+      category: "Seguridad de traslación",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-07-12",
+        nextScheduled: "2026-10-12",
+        status: "al_dia",
+        description:
+          "Inspección de fijaciones, deformaciones, amortiguadores y distancia de seguridad.",
+      },
+      recentAlerts: [],
+      spareParts: [
+        {
+          name: "Amortiguador elastomérico de fin de carrera",
+          priority: "preventivo",
+          recommendedPurchaseBefore: "2027-01-15",
+          reason:
+            "Mantener una unidad disponible para reemplazo ante daño por impacto.",
+        },
+      ],
+    },
+    {
       id: "bridge",
       assetId: "CRN-01-BRG",
       name: "Puente de la grúa",
@@ -54,6 +81,31 @@ export const craneDemoData = {
       },
       recentAlerts: [],
       spareParts: [],
+    },
+    {
+      id: "power-supply",
+      parentId: "bridge",
+      assetId: "CRN-01-FST",
+      name: "Alimentación eléctrica por festón",
+      category: "Alimentación eléctrica",
+      status: "operativo",
+      maintenance: {
+        lastCompleted: "2026-08-01",
+        nextScheduled: "2026-10-01",
+        status: "al_dia",
+        description:
+          "Inspección de carros portacables, lazos, aislamiento, fijaciones y conexiones eléctricas.",
+      },
+      recentAlerts: [],
+      spareParts: [
+        {
+          name: "Carro portacable para sistema festón",
+          priority: "preventivo",
+          recommendedPurchaseBefore: "2026-12-01",
+          reason:
+            "Mantener una unidad de reemplazo para evitar indisponibilidad ante desgaste de ruedas.",
+        },
+      ],
     },
     {
       id: "trolley",

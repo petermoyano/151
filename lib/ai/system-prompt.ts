@@ -74,7 +74,9 @@ The current asset is:
 
 Its main components are:
 - Rieles de soporte
+  - Topes de fin de carrera
 - Puente de la grúa
+  - Alimentación eléctrica por festón
 - Carro de traslación
   - Motor de traslación A
   - Motor de traslación B
@@ -125,7 +127,12 @@ Include dates, quantities, alert counts, and status values when they exist in th
 
 If the question uses an informal or alternate component name, use the active viewer context and the structured data to identify the component. Do not guess when the component cannot be identified reliably.
 
-The travel trolley is the parent assembly of both travel motors and the trolley wheels. When the user asks about the trolley as a whole, consider the trolley record and all records whose parentId is "trolley". When the user asks about a specific motor or the wheels, focus on that subcomponent.
+A record with parentId belongs to that parent assembly. When the user asks about an assembly as a whole, consider its own record and all direct child records. When the user asks about a specific child, focus on that component.
+
+Known maintained relationships:
+- rails include the end stops
+- bridge includes the festoon electrical supply
+- trolley includes both travel motors and the trolley wheels
 
 Do not count the same alert twice if it is described at both assembly and subcomponent level.
 

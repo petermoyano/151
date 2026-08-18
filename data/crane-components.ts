@@ -16,6 +16,16 @@ export const craneComponents: Record<
     status: "Operativo",
     assetCode: "CRN-01-RWY",
   },
+  "end-stops": {
+    id: "end-stops",
+    name: "Topes de fin de carrera",
+    parentId: "rails",
+    category: "Seguridad de traslación",
+    description:
+      "Conjunto de topes mecánicos y amortiguadores que limita el recorrido del puente en ambos extremos de los rieles.",
+    status: "Operativo",
+    assetCode: "CRN-01-STP",
+  },
   bridge: {
     id: "bridge",
     name: "Puente de la grúa",
@@ -24,6 +34,16 @@ export const craneComponents: Record<
       "Estructura portante que atraviesa la nave y sostiene el recorrido transversal del carro.",
     status: "Operativo",
     assetCode: "CRN-01-BRG",
+  },
+  "power-supply": {
+    id: "power-supply",
+    name: "Alimentación eléctrica por festón",
+    parentId: "bridge",
+    category: "Alimentación eléctrica",
+    description:
+      "Riel portacables, carros y lazos flexibles que suministran energía al carro durante su desplazamiento.",
+    status: "Operativo",
+    assetCode: "CRN-01-FST",
   },
   trolley: {
     id: "trolley",
