@@ -1,5 +1,9 @@
 import {
   Activity,
+  BookOpen,
+  ExternalLink,
+  Factory,
+  FileText,
   Box,
   ChevronDown,
   CircleDot,
@@ -93,9 +97,43 @@ export function ComponentInfoPanel({
               <CircleDot size={13} aria-hidden="true" />
               Estado
             </dt>
-            <dd className="flex items-center gap-2 text-xs font-medium text-emerald-300">
-              <span className="size-1.5 rounded-full bg-emerald-400" />
+            <dd
+              className={
+                component.status === "Operativo"
+                  ? "flex items-center gap-2 text-xs font-medium text-emerald-300"
+                  : component.status === "Requiere atención"
+                    ? "flex items-center gap-2 text-xs font-medium text-amber-300"
+                    : "flex items-center gap-2 text-xs font-medium text-rose-300"
+              }
+            >
+              <span
+                className={
+                  component.status === "Operativo"
+                    ? "size-1.5 rounded-full bg-emerald-400"
+                    : component.status === "Requiere atención"
+                      ? "size-1.5 rounded-full bg-amber-400"
+                      : "size-1.5 rounded-full bg-rose-400"
+                }
+              />
               {component.status}
+            </dd>
+          </div>
+          <div className="flex items-center justify-between gap-4 py-3">
+            <dt className="flex items-center gap-2 text-xs text-slate-500">
+              <Factory size={13} aria-hidden="true" />
+              Fabricante
+            </dt>
+            <dd className="max-w-[58%] text-right text-xs font-medium text-slate-300">
+              {component.manufacturer}
+            </dd>
+          </div>
+          <div className="flex items-center justify-between gap-4 py-3">
+            <dt className="flex items-center gap-2 text-xs text-slate-500">
+              <Box size={13} aria-hidden="true" />
+              Modelo
+            </dt>
+            <dd className="max-w-[58%] text-right text-xs font-medium text-slate-300">
+              {component.model}
             </dd>
           </div>
           <div className="flex items-center justify-between gap-4 py-3">
@@ -128,6 +166,99 @@ export function ComponentInfoPanel({
           <Sparkles size={13} aria-hidden="true" />
           Consultar con Nexo Industrial AI
         </Button>
+
+        <details className="group mt-4 border border-white/[0.08] bg-black/10">
+          <summary className="flex cursor-pointer list-none items-center gap-3 px-3.5 py-3 [&::-webkit-details-marker]:hidden">
+            <BookOpen
+              size={14}
+              className="shrink-0 text-sky-400"
+              aria-hidden="true"
+            />
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-medium text-slate-300">
+                Ficha técnica y documentación
+              </p>
+              <p className="mt-0.5 truncate text-[9px] text-slate-600">
+                {component.specifications.length} especificaciones ·{" "}
+                {component.documentation.length} documentos
+              </p>
+            </div>
+            <ChevronDown
+              size={13}
+              className="shrink-0 text-slate-600 transition-transform group-open:rotate-180"
+              aria-hidden="true"
+            />
+          </summary>
+
+          <div className="border-t border-white/[0.07]">
+            <div className="divide-y divide-white/[0.06] px-3.5 py-1">
+              {component.specifications.map((specification) => (
+                <div
+                  key={specification.label}
+                  className="grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-3 py-2.5"
+                >
+                  <p className="text-[10px] text-slate-500">
+                    {specification.label}
+                  </p>
+                  <div className="text-right">
+                    <p className="text-[10px] leading-4 text-slate-300">
+                      {specification.value}
+                    </p>
+                    <span
+                      className={
+                        specification.basis === "FORVIS"
+                          ? "mt-1 inline-block border border-sky-400/15 px-1.5 py-0.5 font-mono text-[7px] uppercase tracking-[0.1em] text-sky-400/70"
+                          : "mt-1 inline-block border border-amber-400/15 px-1.5 py-0.5 font-mono text-[7px] uppercase tracking-[0.1em] text-amber-300/70"
+                      }
+                    >
+                      {specification.basis}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-white/[0.07] px-3.5 py-3">
+              <p className="mb-2 font-mono text-[8px] uppercase tracking-[0.16em] text-slate-600">
+                Documentación vinculada
+              </p>
+              <div className="space-y-1.5">
+                {component.documentation.map((document) => (
+                  <a
+                    key={document.url}
+                    href={document.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group/document flex items-start gap-2.5 border border-white/[0.07] px-2.5 py-2.5 transition-colors hover:border-sky-400/25 hover:bg-sky-400/[0.04] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-400"
+                  >
+                    <FileText
+                      size={13}
+                      className="mt-0.5 shrink-0 text-sky-400/70"
+                      aria-hidden="true"
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[10px] leading-4 text-slate-300 group-hover/document:text-sky-200">
+                        {document.title}
+                      </span>
+                      <span className="mt-0.5 block font-mono text-[7px] uppercase tracking-[0.1em] text-slate-600">
+                        {document.publisher} · {document.type}
+                      </span>
+                    </span>
+                    <ExternalLink
+                      size={11}
+                      className="mt-0.5 shrink-0 text-slate-600 group-hover/document:text-sky-400"
+                      aria-hidden="true"
+                    />
+                  </a>
+                ))}
+              </div>
+              <p className="mt-2.5 text-[9px] leading-4 text-slate-600">
+                Los valores “Configuración demo” deben validarse contra la
+                placa y la documentación del equipo instalado.
+              </p>
+            </div>
+          </div>
+        </details>
 
         <details className="group mt-4 border border-white/[0.08] bg-black/10">
           <summary className="flex cursor-pointer list-none items-center gap-3 px-3.5 py-3 [&::-webkit-details-marker]:hidden">

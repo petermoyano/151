@@ -70,7 +70,7 @@ export function IndustrialViewer() {
             Puente grúa 01
           </span>
           <span className="border border-white/10 px-1.5 py-0.5 font-mono text-[8px] text-slate-600 max-md:hidden">
-            CRN-01
+            FORVIS · CRN-01
           </span>
         </div>
 

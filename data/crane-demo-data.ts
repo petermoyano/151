@@ -1,3 +1,5 @@
+import { forvisComponentData } from "@/data/forvis-component-data";
+
 export const craneDemoComponentIds = [
   "rails",
   "end-stops",
@@ -20,7 +22,15 @@ export const craneDemoData = {
   asset: {
     id: "CRN-01",
     name: "Puente Grúa 01",
-    type: "Puente grúa industrial",
+    type: "Puente grúa birriel apoyado",
+    manufacturer: "FORVIS",
+    model: "Puente grúa birriel con vigas de carga superiores",
+    ratedCapacityKg: 5_000,
+    spanM: 20,
+    runwayLengthM: 50,
+    hoistModel: "FVS3 5008.1",
+    configurationBasis:
+      "Configuración de demostración compatible con catálogo FORVIS; validar contra la placa y documentación del activo instalado.",
     location: "Nave Principal",
     operationalStatus: "operativo",
     overallHealth: "atencion",
@@ -32,6 +42,7 @@ export const craneDemoData = {
       assetId: "CRN-01-RLS",
       name: "Rieles de soporte",
       category: "Estructura",
+      technical: forvisComponentData.rails,
       status: "operativo",
       maintenance: {
         lastCompleted: "2026-07-12",
@@ -49,6 +60,7 @@ export const craneDemoData = {
       assetId: "CRN-01-STP",
       name: "Topes de fin de carrera",
       category: "Seguridad de traslación",
+      technical: forvisComponentData["end-stops"],
       status: "operativo",
       maintenance: {
         lastCompleted: "2026-07-12",
@@ -71,9 +83,10 @@ export const craneDemoData = {
     {
       id: "bridge",
       assetId: "CRN-01-BRG",
-      name: "Puente de la grúa",
+      name: "Puente birriel FORVIS",
       category: "Estructura principal",
       status: "operativo",
+      technical: forvisComponentData.bridge,
       maintenance: {
         lastCompleted: "2026-07-12",
         nextScheduled: "2026-10-12",
@@ -88,9 +101,10 @@ export const craneDemoData = {
       id: "power-supply",
       parentId: "bridge",
       assetId: "CRN-01-FST",
-      name: "Alimentación eléctrica por festón",
+      name: "Sistema festón de alimentación",
       category: "Alimentación eléctrica",
       status: "operativo",
+      technical: forvisComponentData["power-supply"],
       maintenance: {
         lastCompleted: "2026-08-01",
         nextScheduled: "2026-10-01",
@@ -116,6 +130,7 @@ export const craneDemoData = {
       name: "Tablero general de potencia",
       category: "Distribución eléctrica",
       status: "operativo",
+      technical: forvisComponentData["main-power-panel"],
       maintenance: {
         lastCompleted: "2026-07-18",
         nextScheduled: "2026-10-18",
@@ -141,6 +156,7 @@ export const craneDemoData = {
       name: "Tablero de control del puente",
       category: "Control y automatización",
       status: "operativo",
+      technical: forvisComponentData["bridge-control-panel"],
       maintenance: {
         lastCompleted: "2026-08-04",
         nextScheduled: "2026-10-04",
@@ -162,9 +178,10 @@ export const craneDemoData = {
     {
       id: "trolley",
       assetId: "CRN-01-TRL",
-      name: "Carro de traslación",
+      name: "Carro birriel FORVIS",
       category: "Movimiento",
       status: "operativo",
+      technical: forvisComponentData.trolley,
       maintenance: {
         lastCompleted: "2026-07-28",
         nextScheduled: "2026-09-28",
@@ -182,6 +199,7 @@ export const craneDemoData = {
       name: "Motor de traslación A",
       category: "Accionamiento del carro",
       status: "operativo",
+      technical: forvisComponentData["trolley-motor-a"],
       maintenance: {
         lastCompleted: "2026-07-28",
         nextScheduled: "2026-09-28",
@@ -199,6 +217,7 @@ export const craneDemoData = {
       name: "Motor de traslación B",
       category: "Accionamiento del carro",
       status: "operativo",
+      technical: forvisComponentData["trolley-motor-b"],
       maintenance: {
         lastCompleted: "2026-07-28",
         nextScheduled: "2026-09-28",
@@ -225,6 +244,7 @@ export const craneDemoData = {
       name: "Ruedas del carro",
       category: "Rodadura del carro",
       status: "operativo",
+      technical: forvisComponentData["trolley-wheels"],
       maintenance: {
         lastCompleted: "2026-07-28",
         nextScheduled: "2026-09-28",
@@ -246,9 +266,10 @@ export const craneDemoData = {
     {
       id: "hoist",
       assetId: "CRN-01-HST",
-      name: "Sistema de izaje",
+      name: "Polipasto FORVIS FVS3",
       category: "Izaje",
       status: "atencion",
+      technical: forvisComponentData.hoist,
       maintenance: {
         lastCompleted: "2026-07-22",
         nextScheduled: "2026-09-22",
@@ -298,6 +319,7 @@ export const craneDemoData = {
       name: "Cable de acero",
       category: "Sistema de izaje",
       status: "operativo",
+      technical: forvisComponentData.cable,
       maintenance: {
         lastCompleted: "2026-07-06",
         nextScheduled: "2026-09-05",
@@ -322,6 +344,7 @@ export const craneDemoData = {
       name: "Gancho principal",
       category: "Sistema de izaje",
       status: "operativo",
+      technical: forvisComponentData.hook,
       maintenance: {
         lastCompleted: "2026-08-02",
         nextScheduled: "2026-10-02",

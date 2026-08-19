@@ -3,7 +3,30 @@ export type ComponentStatus =
   | "Requiere atención"
   | "Fuera de servicio";
 
-export interface IndustrialComponentMetadata<TId extends string = string> {
+export type TechnicalDataBasis = "FORVIS" | "Configuración demo";
+
+export interface ComponentSpecification {
+  label: string;
+  value: string;
+  basis: TechnicalDataBasis;
+}
+
+export interface ComponentDocumentation {
+  title: string;
+  type: string;
+  publisher: string;
+  url: string;
+}
+
+export interface ComponentTechnicalData {
+  manufacturer: string;
+  model: string;
+  specifications: readonly ComponentSpecification[];
+  documentation: readonly ComponentDocumentation[];
+}
+
+export interface IndustrialComponentMetadata<TId extends string = string>
+  extends ComponentTechnicalData {
   id: TId;
   parentId?: TId;
   name: string;

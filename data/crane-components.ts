@@ -1,3 +1,4 @@
+import { forvisComponentData } from "@/data/forvis-component-data";
 import type {
   CraneComponentId,
   IndustrialComponentMetadata,
@@ -9,41 +10,45 @@ export const craneComponents: Record<
 > = {
   rails: {
     id: "rails",
-    name: "Rieles de apoyo",
+    name: "Vías carrileras",
     category: "Estructura de rodadura",
     description:
-      "Vigas carrileras y columnas de apoyo que permiten el desplazamiento de la grúa a lo largo de la nave.",
+      "Vigas carrileras elevadas y columnas de apoyo para el desplazamiento longitudinal del puente FORVIS.",
     status: "Operativo",
     assetCode: "CRN-01-RWY",
+    ...forvisComponentData.rails,
   },
   "end-stops": {
     id: "end-stops",
-    name: "Topes de fin de carrera",
+    name: "Topes y fines de carrera",
     parentId: "rails",
     category: "Seguridad de traslación",
     description:
-      "Conjunto de topes mecánicos y amortiguadores que limita el recorrido del puente en ambos extremos de los rieles.",
+      "Topes mecánicos, paragolpes y finales de carrera que limitan el recorrido del puente en ambos extremos.",
     status: "Operativo",
     assetCode: "CRN-01-STP",
+    ...forvisComponentData["end-stops"],
   },
   bridge: {
     id: "bridge",
-    name: "Puente de la grúa",
+    name: "Puente birriel FORVIS",
     category: "Estructura principal",
     description:
-      "Estructura portante que atraviesa la nave y sostiene el recorrido transversal del carro.",
+      "Puente grúa birriel apoyado, con vigas de carga superiores y configuración nominal de 5 toneladas.",
     status: "Operativo",
     assetCode: "CRN-01-BRG",
+    ...forvisComponentData.bridge,
   },
   "power-supply": {
     id: "power-supply",
-    name: "Alimentación eléctrica por festón",
+    name: "Sistema festón de alimentación",
     parentId: "bridge",
     category: "Alimentación eléctrica",
     description:
-      "Riel portacables, carros y lazos flexibles que suministran energía al carro durante su desplazamiento.",
+      "Sistema de electrificación móvil por festón integrado por FORVIS para alimentar el carro sobre la trocha.",
     status: "Operativo",
     assetCode: "CRN-01-FST",
+    ...forvisComponentData["power-supply"],
   },
   "main-power-panel": {
     id: "main-power-panel",
@@ -51,9 +56,10 @@ export const craneComponents: Record<
     parentId: "power-supply",
     category: "Distribución eléctrica",
     description:
-      "Tablero principal que concentra protección, seccionamiento y distribución de energía para el puente grúa.",
+      "Gabinete FORVIS de seccionamiento, protección y distribución eléctrica del puente grúa.",
     status: "Operativo",
     assetCode: "CRN-01-PNL-PWR",
+    ...forvisComponentData["main-power-panel"],
   },
   "bridge-control-panel": {
     id: "bridge-control-panel",
@@ -61,18 +67,20 @@ export const craneComponents: Record<
     parentId: "power-supply",
     category: "Control y automatización",
     description:
-      "Gabinete montado en el puente que aloja control, maniobra y señales de los sistemas móviles.",
+      "Gabinete de maniobra FORVIS con receptor industrial Alpha 608B para tres movimientos.",
     status: "Operativo",
     assetCode: "CRN-01-PNL-CTL",
+    ...forvisComponentData["bridge-control-panel"],
   },
   trolley: {
     id: "trolley",
-    name: "Carro de traslación",
+    name: "Carro birriel FORVIS",
     category: "Mecanismo de traslación",
     description:
-      "Carro motorizado que posiciona el conjunto de elevación a lo ancho del puente.",
+      "Carro eléctrico birriel asociado al polipasto FVS3 5008.1 para posicionamiento transversal.",
     status: "Operativo",
     assetCode: "CRN-01-TRL",
+    ...forvisComponentData.trolley,
   },
   "trolley-motor-a": {
     id: "trolley-motor-a",
@@ -80,9 +88,10 @@ export const craneComponents: Record<
     parentId: "trolley",
     category: "Accionamiento del carro",
     description:
-      "Motorreductor eléctrico del lado A que impulsa el desplazamiento transversal del carro.",
+      "Motorreductor de corriente alterna con freno a disco, instalado en el lado A del carro.",
     status: "Operativo",
     assetCode: "CRN-01-TRL-MA",
+    ...forvisComponentData["trolley-motor-a"],
   },
   "trolley-motor-b": {
     id: "trolley-motor-b",
@@ -90,9 +99,10 @@ export const craneComponents: Record<
     parentId: "trolley",
     category: "Accionamiento del carro",
     description:
-      "Motorreductor eléctrico del lado B que sincroniza el desplazamiento transversal del carro.",
+      "Motorreductor de corriente alterna con freno a disco, instalado en el lado B del carro.",
     status: "Operativo",
     assetCode: "CRN-01-TRL-MB",
+    ...forvisComponentData["trolley-motor-b"],
   },
   "trolley-wheels": {
     id: "trolley-wheels",
@@ -100,35 +110,39 @@ export const craneComponents: Record<
     parentId: "trolley",
     category: "Rodadura del carro",
     description:
-      "Conjunto de cuatro ruedas, ejes y superficies de rodadura que guía el carro sobre el puente.",
+      "Conjunto de cuatro ruedas pestañadas que guía el carro birriel sobre las vigas del puente.",
     status: "Operativo",
     assetCode: "CRN-01-TRL-WHL",
+    ...forvisComponentData["trolley-wheels"],
   },
   hoist: {
     id: "hoist",
-    name: "Conjunto del polipasto",
+    name: "Polipasto FORVIS FVS3",
     category: "Sistema de elevación",
     description:
-      "Motor, reductor y tambor de cable que elevan y descienden la carga suspendida.",
-    status: "Operativo",
+      "Polipasto eléctrico a cable FORVIS FVS3 5008.1, configurado para 5 toneladas y 8 metros de elevación.",
+    status: "Requiere atención",
     assetCode: "CRN-01-HST",
+    ...forvisComponentData.hoist,
   },
   cable: {
     id: "cable",
     name: "Cable de acero",
     category: "Sistema de elevación",
     description:
-      "Cables de acero de alta resistencia que conectan el tambor del polipasto con el bloque del gancho.",
+      "Cable de acero en aparejo de dos ramales para el polipasto FORVIS FVS3 5008.1.",
     status: "Operativo",
     assetCode: "CRN-01-CBL",
+    ...forvisComponentData.cable,
   },
   hook: {
     id: "hook",
     name: "Gancho principal",
     category: "Accesorio de izaje",
     description:
-      "Punto principal de acero forjado utilizado para conectar y asegurar las cargas durante el izaje.",
+      "Gancho giratorio de 5 toneladas, montado sobre rodamiento axial y equipado con pestillo de seguridad.",
     status: "Operativo",
     assetCode: "CRN-01-HK1",
+    ...forvisComponentData.hook,
   },
 };
