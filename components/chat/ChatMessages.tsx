@@ -2,10 +2,114 @@
 
 import { Bot, LoaderCircle, RotateCcw, Sparkles } from "lucide-react";
 import { useEffect, useRef } from "react";
+import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { ChatStatus, UIMessage } from "ai";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChatQuickActions } from "@/components/chat/ChatQuickActions";
+const markdownComponents: Components = {
+  h1: ({ children }) => (
+    <h1 className="mb-2 mt-4 border-b border-white/[0.08] pb-1.5 text-sm font-semibold text-slate-100 first:mt-0">
+      {children}
+    </h1>
+  ),
+  h2: ({ children }) => (
+    <h2 className="mb-1.5 mt-4 text-sm font-semibold text-slate-100 first:mt-0">
+      {children}
+    </h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="mb-1.5 mt-3 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-sky-300 first:mt-0">
+      {children}
+    </h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="mb-1 mt-3 text-xs font-semibold text-slate-200 first:mt-0">
+      {children}
+    </h4>
+  ),
+  p: ({ children }) => (
+    <p className="my-2 [overflow-wrap:anywhere] first:mt-0 last:mb-0">
+      {children}
+    </p>
+  ),
+  ul: ({ children }) => (
+    <ul className="my-2 list-disc space-y-1 pl-5 marker:text-sky-500">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="my-2 list-decimal space-y-1 pl-5 marker:text-sky-400">
+      {children}
+    </ol>
+  ),
+  li: ({ children }) => <li className="pl-0.5">{children}</li>,
+  strong: ({ children }) => (
+    <strong className="font-semibold text-slate-100">{children}</strong>
+  ),
+  em: ({ children }) => <em className="text-slate-200">{children}</em>,
+  blockquote: ({ children }) => (
+    <blockquote className="my-3 border-l-2 border-sky-400/40 bg-sky-400/[0.04] py-1 pl-3 text-slate-400">
+      {children}
+    </blockquote>
+  ),
+  a: ({ children, href }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="text-sky-300 underline decoration-sky-400/40 underline-offset-2 hover:text-sky-200"
+    >
+      {children}
+    </a>
+  ),
+  code: ({ children, className }) => (
+    <code
+      className={
+        className
+          ? `${className} font-mono text-[0.85em] text-sky-200`
+          : "bg-white/[0.06] px-1 py-0.5 font-mono text-[0.85em] text-sky-200"
+      }
+    >
+      {children}
+    </code>
+  ),
+  pre: ({ children }) => (
+    <pre className="my-3 overflow-x-auto border border-white/[0.09] bg-black/25 p-3 font-mono text-xs leading-5 text-slate-300">
+      {children}
+    </pre>
+  ),
+  hr: () => <hr className="my-4 border-white/[0.09]" />,
+  table: ({ children }) => (
+    <div className="my-3 overflow-x-auto border border-white/[0.09]">
+      <table className="w-full border-collapse text-left text-xs">
+        {children}
+      </table>
+    </div>
+  ),
+  th: ({ children }) => (
+    <th className="border-b border-white/[0.12] bg-white/[0.04] px-2 py-1.5 font-medium text-slate-200">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="border-b border-white/[0.06] px-2 py-1.5 align-top text-slate-400">
+      {children}
+    </td>
+  ),
+  input: ({ checked, type }) => (
+    <input
+      type={type}
+      checked={checked}
+      disabled
+      className="mr-1.5 size-3 accent-sky-400"
+    />
+  ),
+  del: ({ children }) => (
+    <del className="text-slate-500 decoration-slate-600">{children}</del>
+  ),
+};
 
 interface ChatMessagesProps {
   messages: UIMessage[];
@@ -75,8 +179,11 @@ export function ChatMessages({
               const textParts = message.parts.filter(
                 (part) => part.type === "text",
               );
+              const messageText = textParts
+                .map((part) => part.text)
+                .join("");
 
-              if (textParts.length === 0) {
+              if (!messageText) {
                 return null;
               }
 
@@ -100,14 +207,20 @@ export function ChatMessages({
                         Nexo Industrial AI
                       </div>
                     ) : null}
-                    {textParts.map((part, index) => (
+                    {isUser ? (
                       <p
-                        key={index}
                         className="whitespace-pre-wrap [overflow-wrap:anywhere]"
                       >
-                        {part.text}
+                        {messageText}
                       </p>
-                    ))}
+                    ) : (
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={markdownComponents}
+                      >
+                        {messageText}
+                      </ReactMarkdown>
+                    )}
                   </div>
                 </div>
               );
