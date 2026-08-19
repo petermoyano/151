@@ -68,7 +68,6 @@ const documents = {
 
 export const forvisComponentData = {
   rails: {
-    manufacturer: "FORVIS / estructura de nave",
     model: "Vías carrileras elevadas",
     specifications: [
       {
@@ -79,12 +78,12 @@ export const forvisComponentData = {
       {
         label: "Recorrido longitudinal",
         value: "50 m",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Trocha del puente",
         value: "20 m",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Control recomendado",
@@ -128,12 +127,12 @@ export const forvisComponentData = {
       {
         label: "Capacidad nominal",
         value: "5.000 kg",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Trocha",
         value: "20 m",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Rango de la familia",
@@ -219,7 +218,7 @@ export const forvisComponentData = {
       {
         label: "Configuración",
         value: "Receptor programable en gabinete de control",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
     ],
     documentation: [documents.remoteControl, documents.alpha600Data],
@@ -273,7 +272,7 @@ export const forvisComponentData = {
       {
         label: "Posición",
         value: "Accionamiento lado A",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
     ],
     documentation: [documents.craneTrolley, documents.hoistTechnical],
@@ -300,7 +299,7 @@ export const forvisComponentData = {
       {
         label: "Posición",
         value: "Accionamiento lado B",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
     ],
     documentation: [documents.craneTrolley, documents.hoistTechnical],
@@ -312,7 +311,7 @@ export const forvisComponentData = {
       {
         label: "Cantidad",
         value: "4 ruedas",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Ajuste lateral",
@@ -370,7 +369,6 @@ export const forvisComponentData = {
     ],
   },
   cable: {
-    manufacturer: "FORVIS / proveedor homologado",
     model: "Cable de acero para FVS3 5008.1",
     specifications: [
       {
@@ -408,7 +406,7 @@ export const forvisComponentData = {
       {
         label: "Capacidad nominal",
         value: "5.000 kg",
-        basis: "Configuración demo",
+        basis: "Referencia de proyecto",
       },
       {
         label: "Montaje",

@@ -118,15 +118,17 @@ export function ComponentInfoPanel({
               {component.status}
             </dd>
           </div>
-          <div className="flex items-center justify-between gap-4 py-3">
-            <dt className="flex items-center gap-2 text-xs text-slate-500">
-              <Factory size={13} aria-hidden="true" />
-              Fabricante
-            </dt>
-            <dd className="max-w-[58%] text-right text-xs font-medium text-slate-300">
-              {component.manufacturer}
-            </dd>
-          </div>
+          {component.manufacturer ? (
+            <div className="flex items-center justify-between gap-4 py-3">
+              <dt className="flex items-center gap-2 text-xs text-slate-500">
+                <Factory size={13} aria-hidden="true" />
+                Fabricante
+              </dt>
+              <dd className="max-w-[58%] text-right text-xs font-medium text-slate-300">
+                {component.manufacturer}
+              </dd>
+            </div>
+          ) : null}
           <div className="flex items-center justify-between gap-4 py-3">
             <dt className="flex items-center gap-2 text-xs text-slate-500">
               <Box size={13} aria-hidden="true" />
@@ -200,20 +202,9 @@ export function ComponentInfoPanel({
                   <p className="text-[10px] text-slate-500">
                     {specification.label}
                   </p>
-                  <div className="text-right">
-                    <p className="text-[10px] leading-4 text-slate-300">
-                      {specification.value}
-                    </p>
-                    <span
-                      className={
-                        specification.basis === "FORVIS"
-                          ? "mt-1 inline-block border border-sky-400/15 px-1.5 py-0.5 font-mono text-[7px] uppercase tracking-[0.1em] text-sky-400/70"
-                          : "mt-1 inline-block border border-amber-400/15 px-1.5 py-0.5 font-mono text-[7px] uppercase tracking-[0.1em] text-amber-300/70"
-                      }
-                    >
-                      {specification.basis}
-                    </span>
-                  </div>
+                  <p className="text-right text-[10px] leading-4 text-slate-300">
+                    {specification.value}
+                  </p>
                 </div>
               ))}
             </div>
@@ -252,10 +243,6 @@ export function ComponentInfoPanel({
                   </a>
                 ))}
               </div>
-              <p className="mt-2.5 text-[9px] leading-4 text-slate-600">
-                Los valores “Configuración demo” deben validarse contra la
-                placa y la documentación del equipo instalado.
-              </p>
             </div>
           </div>
         </details>

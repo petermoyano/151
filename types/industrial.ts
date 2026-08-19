@@ -3,7 +3,7 @@ export type ComponentStatus =
   | "Requiere atención"
   | "Fuera de servicio";
 
-export type TechnicalDataBasis = "FORVIS" | "Configuración demo";
+export type TechnicalDataBasis = "FORVIS" | "Referencia de proyecto";
 
 export interface ComponentSpecification {
   label: string;
@@ -19,7 +19,7 @@ export interface ComponentDocumentation {
 }
 
 export interface ComponentTechnicalData {
-  manufacturer: string;
+  manufacturer?: string;
   model: string;
   specifications: readonly ComponentSpecification[];
   documentation: readonly ComponentDocumentation[];

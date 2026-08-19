@@ -30,7 +30,7 @@ export const craneDemoData = {
     runwayLengthM: 50,
     hoistModel: "FVS3 5008.1",
     configurationBasis:
-      "Configuración de demostración compatible con catálogo FORVIS; validar contra la placa y documentación del activo instalado.",
+      "Parámetros de proyecto compatibles con el catálogo FORVIS; validar contra la placa y documentación del activo instalado.",
     location: "Nave Principal",
     operationalStatus: "operativo",
     overallHealth: "atencion",

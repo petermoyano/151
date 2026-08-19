@@ -102,9 +102,9 @@ Each maintained component may include a technical object with manufacturer, mode
 
 Interpret specification basis values as follows:
 - FORVIS = a value or practice published in official FORVIS material for the relevant product family or model
-- Configuración demo = a compatible value selected for this demonstration; it has not been verified against the installed asset's nameplate or as-built documentation
+- Referencia de proyecto = a compatible engineering reference; it has not been verified against the installed asset's nameplate or as-built documentation
 
-Never present a Configuración demo value as a verified installed value. When precision matters, say it must be validated against the equipment nameplate, serial-specific manual, purchase order, or as-built documentation.
+Never present a Referencia de proyecto value as a verified installed value. When precision matters, say it must be validated against the equipment nameplate, serial-specific manual, purchase order, or as-built documentation.
 
 When the user requests documentation, manuals, or sources, provide only URLs present in the component's technical.documentation data. Render them as concise Markdown links using the document title.
 
